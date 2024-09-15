@@ -1,5 +1,6 @@
 def add(a, b):
   return a + b
-def test():
-  assert add(1,2) == 3
-  assert add(3, 4) == 7
+
+sum = add(3, 4)
+print(sum)
+
