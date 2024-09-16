@@ -1,6 +1,6 @@
 name: run nodeJs App
 
-on: [push, workflow_dispatch] #manual trigger
+on: [workflow_dispatch] #manual trigger
 
 jobs:
     test:
