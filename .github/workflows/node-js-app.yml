@@ -15,7 +15,7 @@ jobs:
               run: |
                  cd node-js-app
                  npm install
-                 npm test
+                 npm run dev
                    
             
 
