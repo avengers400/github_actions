@@ -1,0 +1,21 @@
+name: run nodeJs App
+
+on: [push, workflow_dispatch] #manual trigger
+
+jobs:
+    test:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - name: Install NodeJS
+              uses: actions/setup-node@v4
+              with:
+                node-version: 'latest'
+            - name: test the app
+              run: |
+                 npm install
+                 npm test
+                   
+            
+
+
