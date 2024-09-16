@@ -13,6 +13,7 @@ jobs:
                 node-version: 'latest'
             - name: test the app
               run: |
+                 cd node-js-app
                  npm install
                  npm test
                    
