@@ -29,4 +29,10 @@ jobs:
     - name: running the application
       run: |
         python test.py
+  deploy: 
+    
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploying the app
+        run: echo "Deploying........."
     
