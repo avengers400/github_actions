@@ -1,0 +1,15 @@
+name: learning different environments
+on: [workflow_dispatch]
+
+
+jobs:
+    diff_envs:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Run Bash script
+              run: echo "Run bash script"
+              shell: bash
+
+            - name: Run powershell
+              run: Write-output "Running powersherll script"
+              shell: pwsh
