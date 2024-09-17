@@ -1,0 +1,26 @@
+name: learning artifacts
+
+on: [workflow_dispatch] #manual trigger
+
+jobs:
+    test:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - name: Install NodeJS
+              uses: actions/setup-node@v4
+              with:
+                node-version: 'latest'
+            - name: test the app
+              run: |
+                 cd node-js-app
+                 npm install
+                 npm test
+            - uses: actions/upload-artifact@v4
+              with:
+                name: test-report
+                path: test.json
+                   
+            
+
+
