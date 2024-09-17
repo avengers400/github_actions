@@ -13,3 +13,4 @@ jobs:
             - name: Run powershell
               run: Write-output "Running powersherll script"
               shell: pwsh
+    

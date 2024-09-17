@@ -1,0 +1,25 @@
+name: learning strategy matrix concept
+
+on: [workflow_dispatch] #manual trigger
+
+jobs:
+    test:
+        runs-on: ubuntu-latest
+        strategy: 
+            matrix:
+                node-version: [14.x, 16.x, 18.x]
+        steps:
+            - uses: actions/checkout@v4
+            - name: Install NodeJS
+              uses: actions/setup-node@v4
+              with:
+                node-version: ${{ matrix.node-version }}
+            - name: test the app
+              run: |
+                 cd node-js-app
+                 npm install
+                 npm test
+                   
+            
+
+
