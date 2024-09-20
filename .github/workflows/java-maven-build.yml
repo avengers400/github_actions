@@ -6,7 +6,7 @@ jobs:
     build:
         runs-on: ubuntu-latest
         steps:
-          - uses: actions/checkout@v4 #cloning the code
+          - uses: actions/checkout@v4  #cloning the code
           - name: Set up JDK 11 for x64 #installing jdk (java)
             uses: actions/setup-java@v4
             with:
@@ -16,4 +16,13 @@ jobs:
                cache: maven
           - name: Build with maven
             run: |
+               cd java-maven-build
                mvn -B package --file pom.xml
+               echo $GITHUB_WORKSPACE
+               ls
+               mkdir staging && cp target/*.jar staging
+               
+          - uses: actions/upload-artifact@v4
+            with:
+                name: package
+                path: java-maven-build/staging
