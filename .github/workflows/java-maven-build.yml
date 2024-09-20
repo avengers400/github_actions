@@ -20,6 +20,8 @@ jobs:
                mvn -B package --file pom.xml
                echo $GITHUB_WORKSPACE
                ls
+               cd target
+               ls
                mkdir staging && cp target/*.jar staging
                
           - uses: actions/upload-artifact@v4
