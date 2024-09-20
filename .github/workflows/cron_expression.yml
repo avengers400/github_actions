@@ -1,7 +1,7 @@
 name: learning cron expression
 on:
   schedule:
-    - cron: "* *  * * *"
+    - cron: '* *  * * *'
 
 jobs:
  cron_job:
