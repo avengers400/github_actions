@@ -5,7 +5,7 @@ on : [workflow_dispatch]    # [push]--> for auto trigger
 
 jobs:
    test:
-        runs-on: node01
+        runs-on: node1
         steps:
         - uses: actions/checkout@v4
         - name: Print Workspace path
