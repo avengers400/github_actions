@@ -1,0 +1,13 @@
+name: run test app
+
+
+on : [workflow_dispatch]    # [push]--> for auto trigger
+
+jobs:
+   test:
+        runs-on: node01
+        steps:
+        - uses: actions/checkout@v4
+        - name: Print Workspace path
+          run: |
+              python test.py
