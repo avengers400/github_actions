@@ -1,4 +1,4 @@
-name: run test app
+name: self hosted runner
 
 
 on : [workflow_dispatch]    # [push]--> for auto trigger
