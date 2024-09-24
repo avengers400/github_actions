@@ -5,6 +5,12 @@ on: workflow_dispatch
 jobs:
     build:
         runs-on: ubuntu-latest
+        # outputs:
+        #     my_output: ${{ steps.set_output.outputs.myvalue}}
+        # steps:
+        #     - name: Set Output value
+        #       id: set_output
+        #       run: echo "::set-output name=my_value::Hello world"
         steps:
           - uses: actions/checkout@v4  #cloning the code
           - name: Set up JDK 11 for x64 #installing jdk (java)
@@ -33,4 +39,8 @@ jobs:
                 cd java-maven-build
                 docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/springbootweb:${IMAGE_TAG} .
                 docker push ${{ secrets.DOCKERHUB_USERNAME }}/springbootweb:${IMAGE_TAG}
+    # push:
+    #     needs: build
+    #     steps:
+    #         run:  echo "${{ needs.build.outputs.my_output}}"
             
