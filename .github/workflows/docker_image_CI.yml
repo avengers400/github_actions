@@ -1,0 +1,34 @@
+name: java app with maven
+
+on: workflow_dispatch
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+          - uses: actions/checkout@v4  #cloning the code
+          - name: Set up JDK 11 for x64 #installing jdk (java)
+            uses: actions/setup-java@v4
+            with:
+               java-version: '11'
+               distribution: 'temurin'
+               architecture: x64
+               cache: maven
+          - name: Build with maven
+            run: |
+               cd java-maven-build
+               mvn -B package --file pom.xml
+          - name: Login into docker hub registry
+            uses: docker/login-action@v3
+            with:
+          
+                 username: ${{ secrets.DOCKERHUB_USERNAME }}
+                 password: ${{ secrets.DOCKERHUB_PWD }}
+          - name: Build and push image
+            env:
+                IMAGE_TAG: ${{ github.sha }}
+            run: |
+                cd java-maven-build
+                docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/springbootweb:${IMAGE_TAG} .
+                docker push ${{ secrets.DOCKERHUB_USERNAME }}/springbootweb:${IMAGE_TAG}
+            

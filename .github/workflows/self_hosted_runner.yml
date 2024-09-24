@@ -8,6 +8,6 @@ jobs:
         runs-on: node1
         steps:
         - uses: actions/checkout@v4
-        - name: Print Workspace path
+        - name: test python app
           run: |
               python test.py
