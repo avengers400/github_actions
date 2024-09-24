@@ -1,4 +1,4 @@
-name: java app with maven
+name: dockerhub create and push image
 
 on: workflow_dispatch
 
