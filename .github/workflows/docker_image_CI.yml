@@ -28,7 +28,7 @@ jobs:
             env:
                 IMAGE_TAG: ${{ github.sha }}
             run: |
-                echom $GITHUB_WORKSPACE
+                echo $GITHUB_WORKSPACE
                 ls
                 cd java-maven-build
                 docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/springbootweb:${IMAGE_TAG} .
