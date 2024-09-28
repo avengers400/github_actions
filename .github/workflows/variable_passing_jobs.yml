@@ -7,7 +7,7 @@ jobs:
     first_job:
         runs-on: ubuntu-latest
         outputs:
-            my_output: ${{ steps.step1.outputs.my_output}}
+            my_output: ${{ steps.step2.outputs.my_output}}
         steps:
             - name: Checkout
               uses: actions/checkout@v4
