@@ -1,7 +1,7 @@
 name: self hosted runner
 
 
-on : [workflow_dispatch]    # [push]--> for auto trigger
+on : [workflow_dispatch] 
 
 jobs:
    test:
