@@ -1,0 +1,13 @@
+name: self hosted runner
+
+
+on : push
+
+jobs:
+   test:
+        runs-on: self-hosted
+        steps:
+        - uses: actions/checkout@v4
+        - name: test python app
+          run: |
+              python test.py
