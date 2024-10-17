@@ -1,0 +1,45 @@
+#Helm chart should be installed in your runner
+#kubectl should be installed in your runner
+#python installed
+# eks cluster should be available
+#your source code should be available in your repo
+#git installed in your runner
+
+name: two-tier-deployment-through-github-actions
+
+on: [workflow_dispatch] #manual trigger
+
+jobs:
+    test:
+        runs-on: ubuntu-latest # always on self hosted runner
+        steps:
+            - uses: actions/checkout@v4
+            
+              
+            
+            - name: fetch the code from repo
+              run: |
+                 git clone https://github.com/avengers400/two-tier-flask-app.git
+            - name: Building the image
+              run: |
+                 cd two-tier-flask-app
+                 docker build -t flaskapp .
+            - name: Push the docker image into dockerhub
+              run: |
+                 docker login -u rishav23 -p ${{ secrets.dockerhubpwd}} # dockerhub token should be stored in github action secrets
+                 docker tag flaskapp:latest rishav23/flaskapp:latest
+                 docker push rishav23/flaskapp:latest
+            - name: Deploy app
+              run: |
+                   cd eks-manifests
+                   kubectl apply -f mysql-configmap.yml -f mysql-secrets.yml -f mysql-deployment.yml -f mysql-svc.yml
+                   kubectl apply -f two-tier-app-deployment.yml-f two-tier-app-svc.yml
+            - name: Check the deployments
+              run: |
+                kubectl get deploy
+                kubectl get pods
+                kubectl get svc
+
+            
+                  
+                 
