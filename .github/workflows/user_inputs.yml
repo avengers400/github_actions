@@ -14,8 +14,13 @@ on:
                 - dev
           notify:
             description: "Notify the  Deployment status"
-            type: environment
+            required: true
             default: 'true'
+            type: choice
+            options:
+                - true
+                - false
+                
 
 jobs:
     deploy:
