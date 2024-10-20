@@ -5,8 +5,13 @@ on:
         inputs:
           environment:
             description: "Env to Deploy"
-            type: environment
             required: true
+            default: 'production'
+            type: choice
+            options:
+                - prod
+                - qa
+                - dev
           notify:
             description: "Notify the  Deployment status"
             type: environment
